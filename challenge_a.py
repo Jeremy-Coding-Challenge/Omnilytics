@@ -2,7 +2,10 @@ import random
 import string
 from uuid import uuid4
 
+# Based on requirements set
 MAX_NUMBER_OF_SPACES = 10
+MAX_NUMBER_OF_BYTES = 10485760
+
 
 # assume number range between -100 and 100
 MAX_NUMBER = 100
@@ -71,3 +74,20 @@ def generate_alphanumerics_with_spaces():
         + generate_alphanumerics()
         + word[number_of_spaces_before:]
     )
+
+
+def random_object_generator():
+    object_generators = [
+        generate_random_real_number,
+        generate_random_integer,
+        generate_alphabetical_strings,
+        generate_alphanumerics_with_spaces,
+    ]
+    return random.choice(object_generators)()
+
+
+with open("challenge_a.txt", "w") as f:
+    while f.tell() < MAX_NUMBER_OF_BYTES:
+        word = f"{str(random_object_generator())},"
+        f.write(word)
+f.close()
