@@ -87,7 +87,7 @@ def random_object_generator():
 
 
 # Credits to https://stackoverflow.com/a/19079887/12589173 - f.tell method
-with open("challenge_a.txt", "w") as f:
+with open("output_a.txt", "w") as f:
     while f.tell() < MAX_NUMBER_OF_BYTES:
         word = f"{random_object_generator()},"
         f.write(word)
