@@ -37,7 +37,7 @@ def generate_alphabetical_strings():
 
 
 def generate_alphanumerics():
-    """Utilize UUID4, then stripping all "-" and slicing the string randomly
+    """Utilize uuid4, then stripping all "-" and slicing the string randomly
     Returns:
         string: an alphanumeric string
     """
@@ -86,8 +86,9 @@ def random_object_generator():
     return random.choice(object_generators)()
 
 
+# Credits to https://stackoverflow.com/a/19079887/12589173 - f.tell method
 with open("challenge_a.txt", "w") as f:
     while f.tell() < MAX_NUMBER_OF_BYTES:
-        word = f"{str(random_object_generator())},"
+        word = f"{random_object_generator()},"
         f.write(word)
 f.close()
